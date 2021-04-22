@@ -1,5 +1,5 @@
 # This is a small GUI program that encrypts user input with the given offset value using a caeser cypher method of encryption
-
+#todo input validation and blank space triming
 
 
 from tkinter import *
