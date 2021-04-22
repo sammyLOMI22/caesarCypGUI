@@ -17,13 +17,27 @@ def caesar(pText, offset):
    lower =''.join(list(lower))
 
    return pText.translate(str.maketrans(string.ascii_uppercase, upper)).translate(str.maketrans(string.ascii_lowercase,lower))
-def myClick():
 
-    cypherT=caesar(ptxtBox.get(),int(offsetBox.get()))
-    etxt = Label(root, text=cypherT)
-    cyphLB= Label(root, text="Cypher Text:")
-    cyphLB.grid(row=4,column=0)
-    etxt.grid(row=4,column=1)
+def myClick():
+    errorLB = Label(root, text="")
+    errorLB.grid(row=5, column=0)
+    errorLB2 = Label(root, text="")
+    errorLB2.grid(row=6, column=0)
+
+    plainText=ptxtBox.get()
+    offsetNM=int(offsetBox.get())
+    if plainText.replace(" ", "").isalpha() is False:
+        errorLB= Label(root,text="Only letters are allowed!")
+        errorLB.grid(row=5,column=0)
+    if offsetNM >= 0 and offsetNM <= 25:
+        cypherT=caesar(plainText.replace(" ", ""),offsetNM)
+        etxt = Label(root, text=cypherT)
+        cyphLB= Label(root, text="Cypher Text:")
+        cyphLB.grid(row=4,column=0)
+        etxt.grid(row=4,column=1)
+    else:
+        errorLB2 = Label(root, text="Only 0-25 can be used for offset values!")
+        errorLB2.grid(row=6, column=0)
 
 
 #build GUI
